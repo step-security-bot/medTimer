@@ -27,7 +27,7 @@ import com.futsch1.medtimer.R;
 import com.futsch1.medtimer.database.ReminderEvent;
 import com.futsch1.medtimer.helpers.DeleteHelper;
 import com.futsch1.medtimer.helpers.SwipeHelper;
-import com.futsch1.medtimer.reminders.ReminderProcessor;
+import com.futsch1.medtimer.reminders.WorkProcessor;
 
 import java.time.Instant;
 import java.util.List;
@@ -151,7 +151,7 @@ public class OverviewFragment extends Fragment {
         liveData = medicineViewModel.getReminderEvents(0, Instant.now().toEpochMilli() / 1000 - (eventAgeHours * 60 * 60), false);
         liveData.observe(getViewLifecycleOwner(), latestRemindersViewAdapter::submitList);
 
-        ReminderProcessor.requestReschedule(requireContext());
+        WorkProcessor.requestReschedule(requireContext());
 
         swipeHelperEdit.setup(requireContext());
         swipeHelperDelete.setup(requireContext());

@@ -55,7 +55,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".reminders.ReminderProcessor"
+            android:name=".reminders.WorkProcessor"
             android:enabled="true"
             android:exported="true"
             tools:ignore="ExportedReceiver">

@@ -104,7 +104,7 @@ public class RescheduleWork extends Worker {
     }
 
     public static PendingIntent getPendingIntent(Context context, int reminderId, int requestCode, int reminderEventId) {
-        Intent reminderIntent = ReminderProcessor.getReminderAction(context, reminderId, reminderEventId);
+        Intent reminderIntent = WorkProcessor.getReminderAction(context, reminderId, reminderEventId);
         return PendingIntent.getBroadcast(context, requestCode, reminderIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
     }
 

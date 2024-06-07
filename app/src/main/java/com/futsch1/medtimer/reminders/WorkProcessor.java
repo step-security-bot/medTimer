@@ -23,7 +23,7 @@ import androidx.work.WorkRequest;
 
 import com.futsch1.medtimer.WorkManagerAccess;
 
-public class ReminderProcessor extends BroadcastReceiver {
+public class WorkProcessor extends BroadcastReceiver {
 
     public static void requestReschedule(@NonNull Context context) {
         WorkManager workManager = WorkManagerAccess.getWorkManager(context);
@@ -38,7 +38,7 @@ public class ReminderProcessor extends BroadcastReceiver {
     }
 
     private static Intent buildActionIntent(@NonNull Context context, int reminderEventId, String actionName) {
-        Intent notifyDismissed = new Intent(context, ReminderProcessor.class);
+        Intent notifyDismissed = new Intent(context, WorkProcessor.class);
         notifyDismissed.setAction(actionName);
         notifyDismissed.putExtra(EXTRA_REMINDER_EVENT_ID, reminderEventId);
         return notifyDismissed;
@@ -52,7 +52,7 @@ public class ReminderProcessor extends BroadcastReceiver {
         Intent reminderIntent = new Intent(REMINDER_ACTION);
         reminderIntent.putExtra(EXTRA_REMINDER_ID, reminderId);
         reminderIntent.putExtra(EXTRA_REMINDER_EVENT_ID, reminderEventId);
-        reminderIntent.setClass(context, ReminderProcessor.class);
+        reminderIntent.setClass(context, WorkProcessor.class);
         return reminderIntent;
     }
 
@@ -62,7 +62,7 @@ public class ReminderProcessor extends BroadcastReceiver {
         snoozeIntent.putExtra(EXTRA_REMINDER_EVENT_ID, reminderEventId);
         snoozeIntent.putExtra(EXTRA_NOTIFICATION_ID, notificationId);
         snoozeIntent.putExtra(EXTRA_SNOOZE_TIME, snoozeTime);
-        snoozeIntent.setClass(context, ReminderProcessor.class);
+        snoozeIntent.setClass(context, WorkProcessor.class);
         return snoozeIntent;
     }
 

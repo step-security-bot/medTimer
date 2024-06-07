@@ -10,7 +10,7 @@ import androidx.lifecycle.LifecycleService;
 
 import com.futsch1.medtimer.database.MedicineRepository;
 import com.futsch1.medtimer.database.MedicineWithReminders;
-import com.futsch1.medtimer.reminders.ReminderProcessor;
+import com.futsch1.medtimer.reminders.WorkProcessor;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class ReminderSchedulerService extends LifecycleService {
     }
 
     private void scheduleRequest() {
-        ReminderProcessor.requestReschedule(this);
+        WorkProcessor.requestReschedule(this);
     }
 
     @Override

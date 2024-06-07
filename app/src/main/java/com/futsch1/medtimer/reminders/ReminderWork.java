@@ -64,7 +64,7 @@ public class ReminderWork extends Worker {
         }
 
         // Reminder shown, now schedule next reminder
-        ReminderProcessor.requestReschedule(context);
+        WorkProcessor.requestReschedule(context);
 
         return r;
     }

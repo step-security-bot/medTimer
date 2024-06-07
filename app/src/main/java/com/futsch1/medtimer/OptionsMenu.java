@@ -24,7 +24,7 @@ import com.futsch1.medtimer.exporters.Exporter;
 import com.futsch1.medtimer.exporters.PDFExport;
 import com.futsch1.medtimer.helpers.FileHelper;
 import com.futsch1.medtimer.helpers.PathHelper;
-import com.futsch1.medtimer.reminders.ReminderProcessor;
+import com.futsch1.medtimer.reminders.WorkProcessor;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -112,7 +112,7 @@ public class OptionsMenu implements MenuProvider {
             builder.setNegativeButton(R.string.cancel, (dialogInterface, i) -> { // Intentionally left empty
             });
             builder.show();
-            ReminderProcessor.requestReschedule(context);
+            WorkProcessor.requestReschedule(context);
             return true;
         });
     }
@@ -145,7 +145,7 @@ public class OptionsMenu implements MenuProvider {
                     Log.i("GenerateTestData", "Generate new medicine");
                     generateTestData.generateTestMedicine();
                 });
-                handler.post(() -> ReminderProcessor.requestReschedule(context));
+                handler.post(() -> WorkProcessor.requestReschedule(context));
                 return true;
             });
         } else {

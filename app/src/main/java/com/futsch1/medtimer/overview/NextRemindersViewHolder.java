@@ -16,8 +16,8 @@ import com.futsch1.medtimer.R;
 import com.futsch1.medtimer.ScheduledReminder;
 import com.futsch1.medtimer.database.ReminderEvent;
 import com.futsch1.medtimer.helpers.ViewColorHelper;
-import com.futsch1.medtimer.reminders.ReminderProcessor;
 import com.futsch1.medtimer.reminders.ReminderWork;
+import com.futsch1.medtimer.reminders.WorkProcessor;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 
@@ -71,7 +71,7 @@ public class NextRemindersViewHolder extends RecyclerView.ViewHolder {
                 reminderEvent.status = taken ? ReminderEvent.ReminderStatus.TAKEN : ReminderEvent.ReminderStatus.SKIPPED;
                 reminderEvent.processedTimestamp = Instant.now().getEpochSecond();
                 medicineViewModel.medicineRepository.insertReminderEvent(reminderEvent);
-                ReminderProcessor.requestReschedule(nextReminderText.getContext());
+                WorkProcessor.requestReschedule(nextReminderText.getContext());
             }
         });
     }

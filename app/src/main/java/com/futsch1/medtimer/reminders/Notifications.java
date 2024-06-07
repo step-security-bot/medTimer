@@ -30,7 +30,7 @@ public class Notifications {
         int notificationId = getNextNotificationId();
         NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
 
-        Intent notifyTaken = ReminderProcessor.getTakenActionIntent(context, reminderEventId);
+        Intent notifyTaken = WorkProcessor.getTakenActionIntent(context, reminderEventId);
         PendingIntent pendingTaken = PendingIntent.getBroadcast(context, notificationId, notifyTaken, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
         PendingIntent contentIntent = getStartAppIntent(notificationId);
@@ -84,10 +84,10 @@ public class Notifications {
         String dismissNotificationAction = defaultSharedPreferences.getString("dismiss_notification_action", "0");
         int snoozeTime = Integer.parseInt(defaultSharedPreferences.getString("snooze_duration", "15"));
 
-        Intent snooze = ReminderProcessor.getSnoozeIntent(context, reminderId, reminderEventId, notificationId, snoozeTime);
+        Intent snooze = WorkProcessor.getSnoozeIntent(context, reminderId, reminderEventId, notificationId, snoozeTime);
         PendingIntent pendingSnooze = PendingIntent.getBroadcast(context, notificationId, snooze, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Intent notifyDismissed = ReminderProcessor.getDismissedActionIntent(context, reminderEventId);
+        Intent notifyDismissed = WorkProcessor.getDismissedActionIntent(context, reminderEventId);
         PendingIntent pendingDismissed = PendingIntent.getBroadcast(context, notificationId, notifyDismissed, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
 
         if (dismissNotificationAction.equals("0")) {

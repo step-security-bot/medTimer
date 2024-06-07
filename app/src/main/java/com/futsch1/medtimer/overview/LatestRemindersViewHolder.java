@@ -12,7 +12,7 @@ import com.futsch1.medtimer.R;
 import com.futsch1.medtimer.database.ReminderEvent;
 import com.futsch1.medtimer.helpers.TimeHelper;
 import com.futsch1.medtimer.helpers.ViewColorHelper;
-import com.futsch1.medtimer.reminders.ReminderProcessor;
+import com.futsch1.medtimer.reminders.WorkProcessor;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -69,8 +69,8 @@ public class LatestRemindersViewHolder extends RecyclerView.ViewHolder {
     private void processTakenOrSkipped(ReminderEvent reminderEvent, boolean taken) {
         Intent i =
                 taken ?
-                        ReminderProcessor.getTakenActionIntent(itemView.getContext(), reminderEvent.reminderEventId) :
-                        ReminderProcessor.getDismissedActionIntent(itemView.getContext(), reminderEvent.reminderEventId);
+                        WorkProcessor.getTakenActionIntent(itemView.getContext(), reminderEvent.reminderEventId) :
+                        WorkProcessor.getDismissedActionIntent(itemView.getContext(), reminderEvent.reminderEventId);
         itemView.getContext().sendBroadcast(i);
     }
 }
