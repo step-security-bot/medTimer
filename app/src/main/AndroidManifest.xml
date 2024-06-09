@@ -44,6 +44,7 @@
         <activity
             android:name=".MedTimerAppIntro"
             android:theme="@style/Theme.MedTimer" />
+        <activity android:name=".reminders.CustomSnoozeActivity" />
 
         <receiver
             android:name=".Autostart"
